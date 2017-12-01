@@ -117,7 +117,7 @@
   <!-- /About -->
   <!-- Parallax -->
 
-  <!--MODIFI--><div class="block bg-primary block-pd-lg block-bg-overlay text-center" data-bg-img="<?php echo bloginfo('template_directory');>/img/parallax-bg.jpg" data-settings='{"stellar-background-ratio": 0.6}' data-toggle="parallax-bg">
+  <!--MODIFI--><div class="block bg-primary block-pd-lg block-bg-overlay text-center" data-bg-img="img/parallax-bg.jpg" data-settings='{"stellar-background-ratio": 0.6}' data-toggle="parallax-bg">
     <h2>
         Welcome to a perfect theme
       </h2>

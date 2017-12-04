@@ -101,6 +101,34 @@
     <img alt="Bell - A perfect theme" class="gadgets-img hidden-md-down" src="<?php echo get_template_directory_uri();?>/img/gadgets.png">
   </div>
   <!-- /Parallax -->
+  <!--ZONA EXPERIMENTAL-->
+  <div class="row">
+      <?php
+          $args = array('posts_per_page' => 3);
+          $custom_query = new WP_Query($args);
+          if ( $custom_query->have_posts() ): while ($custom_query->have_posts() ) : $custom_query->the_post();
+          the_title(); /*Titulo*/
+          the_time(); /*Fecha*/
+          the_excerpt(); /*Longitud del extracto del post, se puede modificar con un filter hook*/
+          the_author(); /*Muestra el nombre del autor*/
+      ?>
+      <?php
+          endwhile;endif;
+          wp_reset_query();
+      ?>
+      </div>
+      
+      <div class="row">
+        <!--Imagen de thumbnail por defecto para los post que no la tengan-->
+        <?php 
+          if(has_post_thumbnail() ) {
+            $postImg = get_the_post_thumbnail_url();
+          } else{
+            $postImg = get_template_directory_uri()."/img/image-defecto.jpg";
+          }
+        ?>
+      </div>
+  <!--ze-->
   <!-- Features -->
 
   <section class="features" id="features">

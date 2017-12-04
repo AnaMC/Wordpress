@@ -62,3 +62,9 @@
     }
 
 add_action('wp_enqueue_script','theme_scripts'); /*Añadimos la función al hook, sin esto no dçfunciona nada */
+
+/* 
+* Añadir script al tema
+*/
+
+add_theme_support('post-thumbnails');

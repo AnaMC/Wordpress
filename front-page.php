@@ -102,20 +102,32 @@
   </div>
   <!-- /Parallax -->
   <!--ZONA EXPERIMENTAL-->
-  <div class="row">
+  <div class="col">
+    <div class="col-lg-4 col-sm-6 col-xs-12"> <!--Para que use el estilo de boostrap-->
       <?php
           $args = array('posts_per_page' => 3);
           $custom_query = new WP_Query($args);
           if ( $custom_query->have_posts() ): while ($custom_query->have_posts() ) : $custom_query->the_post();
-          the_title(); /*Titulo*/
+          echo '<br>';
+      ?>   
+      <a href="<?php the_permalink(); ?>"class="linkPost"><?php the_title();?></a>
+      <?php
+         // echo '<a href="'. the_permalink(). '">' . the_title().'</a>'; /*Titulo*/
+          echo '<br>';
           the_time(); /*Fecha*/
+          echo '<br>';
           the_excerpt(); /*Longitud del extracto del post, se puede modificar con un filter hook*/
+          echo '<br>';
+          /*Avatar del autor del Post*/
+          echo get_avatar(get_the_author_meta('ID'), 32, get_template_directory_uri() . "/img/avatarDefault.jpg", 'Avatar');
+          
           the_author(); /*Muestra el nombre del autor*/
       ?>
       <?php
           endwhile;endif;
           wp_reset_query();
       ?>
+      </div>
       </div>
       
       <div class="row">

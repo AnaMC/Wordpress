@@ -104,6 +104,7 @@
   <!--ZONA EXPERIMENTAL-->
   <div class="col">
     <div class="col-lg-4 col-sm-6 col-xs-12"> <!--Para que use el estilo de boostrap-->
+    
       <?php
           $args = array('posts_per_page' => 3);
           $custom_query = new WP_Query($args);
@@ -113,6 +114,7 @@
       <a href="<?php the_permalink(); ?>"class="linkPost"><?php the_title();?></a>
       <?php
          // echo '<a href="'. the_permalink(). '">' . the_title().'</a>'; /*Titulo*/
+          $postImg = get_the_post_thumbnail_url();
           echo '<br>';
           the_time(); /*Fecha*/
           echo '<br>';

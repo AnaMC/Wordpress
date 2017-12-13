@@ -114,17 +114,19 @@
       <a href="<?php the_permalink(); ?>"class="linkPost"><?php the_title();?></a>
       <?php
          // echo '<a href="'. the_permalink(). '">' . the_title().'</a>'; /*Titulo*/
-          $postImg = get_the_post_thumbnail_url();
-          echo '<br>';
-          the_time(); /*Fecha*/
-          echo '<br>';
-          the_excerpt(); /*Longitud del extracto del post, se puede modificar con un filter hook*/
+         echo '<br>';
           echo '<br>';
           /*Avatar del autor del Post*/
           echo get_avatar(get_the_author_meta('ID'), 32, get_template_directory_uri() . "/img/avatarDefault.jpg", 'Avatar');
-          
+          echo ' ';
           the_author(); /*Muestra el nombre del autor*/
+          echo ' ';
+          the_time(); /*Fecha*/
+          the_excerpt(); /*Longitud del extracto del post, se puede modificar con un filter hook*/
+          the_tags();
+          echo '<br>';
       ?>
+
       <?php
           endwhile;endif;
           wp_reset_query();

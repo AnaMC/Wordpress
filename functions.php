@@ -68,3 +68,28 @@ add_action('wp_enqueue_script','theme_scripts'); /*Añadimos la función al hook
 */
 
 add_theme_support('post-thumbnails');
+
+function insert_img_responsive($content){
+    
+        //Convertimos el contenido a una codificacion UTF-8
+        $conten= mb_convert_encoding($document, 'HTML-ENTITIES', "UTF-8");
+        //Para poder acceder a los nodos del DOM necesitamos el documento HTML, por lo que crearemos uno con el contenido del Post.
+        $document = new DOMDocument();  
+        //Anulamos la deteccion de errores por parte de PHP para que no "reviente" Si no lo ponemos a true vemos los errores por pantalla.
+        libxml_use_internal_errors(true); 
+        //Con el metodo load cargamos content en el DOM
+        $document->loadHTML(utf8_decode($content)); 
+        // Accedemos a las etiquetas img, esto devuelve un array de img
+        $imgs = $document->getElementsByTagName('img'); 
+        //Recorremos el array, sustituimos las clases por las nuevas img-responsive
+        foreach($imgs as $img){ 
+            $img->setAttribute('class', 'img-responsive');
+            $img->setAttribute('width', '100%');
+            $img->setAttribute('height', '100%');
+        }
+        //Guardamos los calculos, lo guardamos como $html para poder diferenciarlos bien
+        $html=$document->saveHTML();
+        return $html;
+}
+
+add_filter ('the_content', insert_img_responsive);

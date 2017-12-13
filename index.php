@@ -85,7 +85,7 @@
         echo '<br>';
         the_excerpt(); /*Longitud del extracto del post, se puede modificar con un filter hook*/
         echo '<br>';
- 
+        
    ?>
    <?php
       endwhile;endif;

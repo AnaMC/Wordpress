@@ -19,11 +19,41 @@
           echo ' ';
           the_time(); /*Fecha*/
         ?>
-        </div>
+        <br>
+        <hr>
         
+        <!--Comentarios-->
+        <?php /*VER*/
+            $args=array(
+                'category__in'=>catid
+               );
+            $custom_query = new WP_Query($args);
+            if ( $custom_query->have_posts() ): while ($custom_query->have_posts() ) : $custom_query->the_post();
+       ?>
+        
+        <?php 
+          $args=array(
+              'p'=>$post_id
+              );
+        ?>
+         <?php
+          endwhile;endif;
+          wp_reset_query();
+      ?>
+    </div>
         
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <?php 
+          comments_template();
+        ?>
+    </div> 
+</div> 
+        <!--Fin Comentarios-->
+        
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+       
         <?php 
             echo 'Sobre el autor: ';
             echo get_the_author_meta('description'); // Muestra la Bio del autor

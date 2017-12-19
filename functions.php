@@ -69,6 +69,8 @@ add_action('wp_enqueue_script','theme_scripts'); /*Añadimos la función al hook
 
 add_theme_support('post-thumbnails');
 
+/*Hacer las imagenes responsive*/
+
 function insert_img_responsive($content){
     
         //Convertimos el contenido a una codificacion UTF-8
@@ -93,3 +95,15 @@ function insert_img_responsive($content){
 }
 
 add_filter ('the_content', insert_img_responsive);
+
+/*hook para coments*/
+
+function my_comments_form ($fiellds){
+    //Info necesaria
+    $user= wp_get_current_user(); //Quien ha escrito el post
+    $commenter=wp_get_current_commenter(); //Quien va a escribir el post
+    $name=user_exist():$user -> display_name?"";
+    req=get_option('require_name_email');
+}
+
+add_filter('comments_form_default_fields','my_comments_form');

@@ -99,11 +99,35 @@ add_filter ('the_content', insert_img_responsive);
 /*hook para coments*/
 
 function my_comments_form ($fiellds){
-    //Info necesaria
-    $user= wp_get_current_user(); //Quien ha escrito el post
-    $commenter=wp_get_current_commenter(); //Quien va a escribir el post
-    $name=user_exist():$user -> display_name?"";
-    req=get_option('require_name_email');
+    //Información necesaria
+    $user = wp_get_current_user(); //Quien ha escrito el post
+    $commenter = wp_get_current_commenter(); //Datos del usuario que va a dejar el comentario (Nomre, email y url)
+    $nick = $user->exist()?$user -> display_name:''; //Si existe un usuario queremos el nombre
+    $req = get_option('require_name_email');   //Saber si el email del usuario es un campo obligatorio
+    //El objeto fields contiene los campos del formulario, le asignamos las nuevas html
+    $fields['author']='<input type="text" class="comment-form-author" id="author" placeholder="name" name="author" value=""'.esc_attr($commenter['coment_author']).' size="20" required>';
+    $fields['email']='<input type="email" class="comment-form-email" id="email" placeholder="name" name="email" value=""'.esc_attr($commenter['coment_author_email']).' size="20" required>';
+    $fields['ur']='<input type="text" class="comment-form-url" id="url" placeholder="name" name="url" value=""'.esc_attr($commenter['coment_author_url']).' size="20" required>';
+    $fields['comment_field']='<textarea class="comment-form-comment" id="comment" name="comment" value="" cols=" rows="" required></textarea>';
+    
+    return fields;
 }
 
-add_filter('comments_form_default_fields','my_comments_form');
+add_filter('comments_form_defaults_fields','my_comments_form');
+
+/*Eliminar una de las dos text areas que aparecen*/
+
+function my_formm_defaults($defaults){
+    //Necesitamos saber si un susario está logueado o no, con la funcion is_usser_logged_in(true o falase), pero esta función no funcionará si hemos usado query post
+    if (!is_user_logged_in()){
+        if(isset ($defaults['comment_field'])){
+            $defaults['comment_field']="";
+    }
+    else{
+         $defaults['comment_field']='<textarea id="comment" name="comment" value="" cols=" rows=""></textarea>';
+    }
+    }
+    return $defaults;
+}
+
+add_filter('comments_form_defaults','my_form_defaults');

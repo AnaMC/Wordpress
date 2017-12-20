@@ -119,7 +119,10 @@
           /*Avatar del autor del Post*/
           echo get_avatar(get_the_author_meta('ID'), 32, get_template_directory_uri() . "/img/avatarDefault.jpg", 'Avatar');
           echo ' ';
-          the_author(); /*Muestra el nombre del autor*/
+      ?>
+          <a href='#'> <?php echo get_the_author_posts_link(); ?> </a>  <!--Muestra el nombre del autor como si fuera un enlace-->
+          
+      <?php
           echo ' ';
           the_time(); /*Fecha*/
           the_excerpt(); /*Longitud del extracto del post, se puede modificar con un filter hook*/

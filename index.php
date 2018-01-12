@@ -132,7 +132,7 @@
     </div>
      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"> <!--col-lg-4 (Las que faltan del div superior)-->
          <?php
-            get_sidebar();
+            get_sidebar();  /*Invocamos al sidebar*/
          ?>
     </div>
   </div>

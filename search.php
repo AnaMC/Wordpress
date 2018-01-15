@@ -1,6 +1,6 @@
 <?
     /*
-        Template Name: Archivos
+        Template Name: Search
     */
 
 ?>

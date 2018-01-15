@@ -111,16 +111,8 @@
       $custom_query = new WP_Query($args); //LOOP Para resto de post excepto el destacado
       if($custom_query->have_posts()):while($custom_query->have_posts()):$custom_query->the_post();
       
-         the_title();
-          echo '<br>';
-          /*Avatar del autor del Post*/
-          echo get_avatar(get_the_author_meta('ID'), 32, get_template_directory_uri() . "/img/avatarDefault.jpg", 'Avatar');
-          the_author(); /*Muestra el nombre del autor*/
-          the_time(); /*Fecha*/
-          echo '<br>';
-          the_excerpt(); /*Longitud del extracto del post, se puede modificar con un filter hook*/
-          echo '<br>';
-           
+          get_template_part('content'); /*nos llevamos el codigo a content.php*/
+        
        ?> 
        
       <?php

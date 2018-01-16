@@ -66,8 +66,26 @@
    <?php                      //POST DESTACADO
       $args = array(
           'posts_per_page' => 1,
-          'orderby' => 'post_date'
+          
+          /*Excluímos los post que no sean de tipo estandar*/
+          
+          tax_query=>array( /*Con tax query excluímos determinadas taxonomías de la consulta*/
+              array(
+                'taxonomy'=>'post_format',  /*Lo que se va a buscar*/
+                'field'=> 'slug',           /*Que va a hacer con.... 'slug'->titulos(todos) de wp*/
+                'terms'=>array(             /*Que va a buscar*/
+                    'post_format_link',
+                    'post_format-quote',    /*Formatos que queremos excluir, podemos ponerlos todos o solo los que tengamos habilitados en funtions.php -> (add_theme_support('post-formats')...*/
+                    'post_format_video',
+                    'post_format_audio',
+                    'post_format_image',
+                    'post_format_gallery'
+                  ),
+                  'operator'=>'NOT IN'      /*¿Que vamos a hacer con los formatos? EXCLUIRLOS, exxclusion en consulta SQL*/
+                )
+            )
         );
+        
         
         // Copiar a libreta
         
@@ -111,7 +129,7 @@
       $custom_query = new WP_Query($args); //LOOP Para resto de post excepto el destacado
       if($custom_query->have_posts()):while($custom_query->have_posts()):$custom_query->the_post();
       
-          get_template_part('content'); /*nos llevamos el codigo a content.php*/
+          get_template_part('content', get_post_format()); /*nos llevamos el codigo a content.php*/
         
        ?> 
        

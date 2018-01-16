@@ -1,5 +1,8 @@
 
 <?php 
+
+/*Visualiza el titulo, autor y fecha del post en las busquedas*/
+
     global $contador;
     $contador ++; // Incrementamos el contador de filas
 ?>

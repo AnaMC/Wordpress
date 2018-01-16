@@ -5,6 +5,8 @@
 ?>
 <div class="row">
     <div class="container">
+
+
         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
             <?php 
                 the_content(); 
@@ -43,6 +45,23 @@
     </div>
         
 <div class="row">
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+       
+        <?php 
+            echo 'Sobre el autor: ';
+            echo get_the_author_meta('description'); // Muestra la Bio del autor
+            echo '<br>';
+        ?>
+    </div> 
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <?php 
+            get_sidebar();
+        ?>
+    </div>
+    
+</div>  
+        
+<div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div id="respond" class="comment-respond">
             <?php 
@@ -53,25 +72,8 @@
 </div> 
         <!--Fin Comentarios-->
         
-<div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-       
-        <?php 
-            echo 'Sobre el autor: ';
-            echo get_the_author_meta('description'); // Muestra la Bio del autor
-            echo '<br>';
-        ?>
-    </div> 
-    
-</div>  
-<div class="row">
-    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-        <?php 
-            get_sidebar();
-        ?>
-    </div>
-</div>
-    
+
+
 </div>
 
 <?php

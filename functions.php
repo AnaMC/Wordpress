@@ -68,6 +68,7 @@ add_action('wp_enqueue_script','theme_scripts'); /*Añadimos la función al hook
 */
 
 add_theme_support('post-thumbnails');
+add_theme_support('post-formats', array('quote','link','gallery','list','audio', 'video')); /*Activa todos los tipos de formato de un post*/ /*COMPLETAR*/
 
 /*Hacer las imagenes responsive*/
 
@@ -129,5 +130,39 @@ function my_formm_defaults($defaults){
     }
     return $defaults;
 }
+
+/*Crear widgets en el sidebar*/
+
+function crea_area_widgets() {
+    $sidebarArgs = array(
+        'name' => 'Sidebar Widget',
+        'id' => 'sidebar',
+        'description' => 'Sidebar Widgets Area',
+        'before_widget' => '<div class="widget %2$s">',
+        'after_widget' => '</div>'
+    );
+    register_sidebar($sidebarArgs);
+    
+    $footerArgs = array(
+        'name' => 'Footer Widget',
+        'id' => 'footer',
+        'description' => 'Footer Widgets Area',
+        'before_widget' => '<div class="widget %2$s">',
+        'after_widget' => '</div>'
+    );
+    register_sidebar($footerArgs);
+}
+add_action('widgets_init', 'crea_area_widgets');
+
+
+function add_social_media($user_methods) {
+    $user_methods['facebook'] = 'Facebook account';
+    $user_methods['twitter'] = 'Twitter account';
+    //unset($user_contact['field']); /*Para eliminar campos*/
+    return $user_methods;
+}
+add_filter('user_contactmethods', 'add_social_media');
+
+
 
 add_filter('comments_form_defaults','my_form_defaults');

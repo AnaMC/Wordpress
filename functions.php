@@ -130,6 +130,7 @@ function my_formm_defaults($defaults){
     }
     return $defaults;
 }
+add_filter('comments_form_defaults','my_form_defaults');
 
 /*Crear widgets en el sidebar*/
 
@@ -163,6 +164,87 @@ function add_social_media($user_methods) {
 }
 add_filter('user_contactmethods', 'add_social_media');
 
+//Método 2 SKILLS
 
+function skills_fields($user){ ?>
+    <!--Etiqueta del panel para los nuevos campos-->
+    <h3><?php _e("User skills information","blank");?></h3>
+    <table class="form-table">
+        
+        <tr>
+            <th><label for="skill1"><?php _e("Skill 1");?></label></th>
+            <td>
+                <input type="text" name="skill1" id="skill1" value="<?php echo esc_attr(get_the_author_meta('skill1', $user->ID));?>" class="regular-text">
+                <span class="description"><?php _e("Please enter your skill-1 description.");?></span>
+            </td>
+            <th><label for="skill1v"><?php _e("Skill 1 Value");?></label></th>
+            <td>
+                <input type="text" name="skill1v" id="skill1v" value="<?php echo esc_attr(get_the_author_meta('skill1v', $user->ID));?>" class="regular-text">
+                <span class="description"><?php _e("Please enter your skill-1 value.");?></span>
+            </td>
+        </tr>
+            
+        <tr>
+            <th><label for="skill2"><?php _e("Skill 2");?></label></th>
+            <td>
+                <input type="text" name="skill2" id="skill2" value="<?php echo esc_attr(get_the_author_meta('skill2', $user->ID));?>" class="regular-text">
+                <span class="description"><?php _e("Please enter your skill-2 description.");?></span>
+            </td>
+            <th><label for="skill2v"><?php _e("Skill 2 Value");?></label></th>
+            <td>
+                <input type="text" name="skill2v" id="skill2v" value="<?php echo esc_attr(get_the_author_meta('skill2v', $user->ID));?>" class="regular-text">
+                <span class="description"><?php _e("Please enter your skill-2 value.");?></span>
+            </td>
+        </tr>
+        
+        <tr>
+            <th><label for="skill3"><?php _e("Skill 3");?></label></th>
+            <td>
+                <input type="text" name="skill3" id="skill3" value="<?php echo esc_attr(get_the_author_meta('skill3', $user->ID));?>" class="regular-text">
+                <span class="description"><?php _e("Please enter your skill-3 description.");?></span>
+            </td>
+            <th><label for="skill3v"><?php _e("Skill 3 Value");?></label></th>
+            <td>
+                <input type="text" name="skill3v" id="skill3v" value="<?php echo esc_attr(get_the_author_meta('skill3v', $user->ID));?>" class="regular-text">
+                <span class="description"><?php _e("Please enter your skill-3 value.");?></span>
+            </td>
+        </tr>
+        
+        <tr>
+            <th><label for="skill4"><?php _e("Skill 4");?></label></th>
+            <td>
+                <input type="text" name="skill4" id="skill4" value="<?php echo esc_attr(get_the_author_meta('skill4', $user->ID));?>" class="regular-text">
+                <span class="description"><?php _e("Please enter your skill-4 description.");?></span>
+            </td>
+            <th><label for="skill4v"><?php _e("Skill 4 Value");?></label></th>
+            <td>
+                <input type="text" name="skill4v" id="skill4v" value="<?php echo esc_attr(get_the_author_meta('skill4v', $user->ID));?>" class="regular-text">
+                <span class="description"><?php _e("Please enter your skill-4 value.");?></span>
+            </td>
+        </tr>
+    </table>
+    <?php
+}
+add_action('edit_user_profile','skills_fields');
+add_action('show_user_profile','skills_fields');
 
-add_filter('comments_form_defaults','my_form_defaults');
+function save_skills_fields($user_id){
+    //Nos aseguramos de que el usuario puede editar
+    if(!current_user_can('edit_user',user_id)){ /*Utilizamos current  para preguntar si un usuario concreto puede realizar una acción concreta*/
+        return;
+    } //Llegado a este punto es que el usuario puede editar sus datos
+    
+    update_user_meta($user_id, 'skill1',$_POST['skill1']);
+    update_user_meta($user_id, 'skill1v',$_POST['skill1v']);
+    
+    update_user_meta($user_id, 'skill2',$_POST['skill2']);
+    update_user_meta($user_id, 'skill2v',$_POST['skill2v']);
+    
+    update_user_meta($user_id, 'skill3',$_POST['skill3']);
+    update_user_meta($user_id, 'skill3v',$_POST['skill3v']);
+    
+    update_user_meta($user_id, 'skill4',$_POST['skill4']);
+    update_user_meta($user_id, 'skill4v',$_POST['skill4v']);
+}
+add_action('personal_options_update','save_skills_fields');
+add_action('edit_user_profile_update', 'save_skills_fields');

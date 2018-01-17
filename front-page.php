@@ -98,7 +98,7 @@
     <p>
       This is the most powerful theme with thousands of options that you have never seen before.
     </p>
-    <img alt="Bell - A perfect theme" class="gadgets-img hidden-md-down" src="<?php echo get_template_directory_uri();?>/img/gadgets.png">
+    <img alt="Bell - A perfect theme" class="gadgets-img hidden-md-down" src="<?php echo get_template_directory_uri();?>/img/horizontal.jpg">
   </div>
   <!-- /Parallax -->
   <!--ZONA EXPERIMENTAL-->

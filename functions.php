@@ -248,3 +248,66 @@ function save_skills_fields($user_id){
 }
 add_action('personal_options_update','save_skills_fields');
 add_action('edit_user_profile_update', 'save_skills_fields');
+
+/*
+*Función que devuelve el rol de un autor
+*@param int autor ID
+*
+*/
+
+function get_author_rol ($user_id){
+    /*Extraemos toda la info del autor*/
+    $user_info=get_userdata($user_id);
+    return implode (',', $user_info->roles);
+}
+
+//CUSTOM POST TYPE
+
+function makeup_shop(){
+    $support = array(           //Array de soporte
+        'title',
+        'editor',
+        'author',
+        'thumbnail',
+        //'custom-fields',
+        'comments',
+        'revisions',
+    );
+    
+    $labels = array(            //Array de labels
+        'name'=> _x('Maquillaje','plural'),
+        'singular_name'=> _x('Maquillaje','singular'),
+        'menu_name'=> _x('Maquillaje','admin menu'),
+        'name_admin_bar'=> _x('Maquillaje','admin bar'),
+        'add_new'=> _x('Añadir nuevo','agregar nuevo'),
+        //
+        'add_new_item'=> __('Añadir Maquillaje nuevo'),
+        'new_item'=> __('Maquillaje nuevo'),
+        'edit_item'=> __('Editar Maquillaje'),
+        'view_item'=> __('ver Maquillaje'),
+        'all_items'=> __('Todo el Maquillaje'),
+        'search_items'=> __('Buscar Maquillaje'),
+        'not_found'=> __('Maquillaje no encontrado. '),
+    );
+    
+    $args = array(                      //Array de argumentos
+        'supports' => $support,                         //Array de paneles soportados en el admin area
+        'labels' => $labels,                            //Traducción  para los labels en el admina area
+        'public' => true,                               //Ambito del post public
+        'query_var' => true,                            //La query var soportara los post personalizados 
+        'rewrite' => array ('slug' => 'application'),   //Slug para el post
+        'has_archive' => true,                          //permitimos los archivos adjuntos
+        'hiperarchical' => false,                       //no va a tener posts hijos (no hay jerarquia)
+        'menu_position' => 5,                           //posuicion de la opción de menu en el admin area
+    );
+    
+    register_post_type('makeup_shop', $args);    
+}
+add_action('init','makeup_shop');
+
+
+
+
+
+
+

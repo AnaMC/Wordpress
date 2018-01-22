@@ -24,7 +24,7 @@
 
   <!-- Favicon -->
   <link href="<?php echo get_template_directory_uri();?>/img/favicon.png" rel="icon">
-
+ 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700|Roboto:400,900" rel="stylesheet">
 
@@ -41,6 +41,7 @@
     wp_head(); /*Gancho para el head*/
     wp_enqueue_script('jquery'); /*Ponemos en cola el script*/ 
     wp_enqueue_style( 'parent-theme-css', get_template_directory_uri() . '/style.css' ); /*Ponemos en cola la hoja de estilos*/
+    get_template_part('nav');
   ?>
   <!-- =======================================================
     Theme Name: Bell

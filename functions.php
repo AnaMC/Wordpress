@@ -336,10 +336,18 @@ add_action('add_meta_boxes', 'add_makeup_shop_metabox');
 
 function add_fields_to_metabox($post){  //Le pasamos $post para poder acceder al id
 
+    /*
+    Creamos un campo nonce para asegurarnos de que las peticiones se realizan desde nuestro sitio web y no desde uno externo
+    (Un pequeño nivel más de seguridad), tiene dos argumentos opcionales:
+    action -> Tentra el nombre de la función encargada de la BD
+    name -> Nombre del campo nonce, una vez enviado el formulario es accesible vía $POST
+    Son obligatorios si queremos ese nuvel de seguridad.
+    */ 
     wp_nonce_field(basename(__FILE__),'makeup_shop_metabox_nonce');
-    
+    //Recogemos los datos de la BBDD con la funcion get_post_meta(id del post,'nombre del campo')
     $nombre=get_post_meta($post->ID,'nombre');
     ?>
+    <!--Dibujamos los campos con las respectivas etiquetas HTML [El name es OBLIGATORIO]-->
     <label for="nombre"> Nombre: </label>
     <input type="text" id="nombre" name="nombre" size="5" value="<?php echo $nombre;?>">
     
@@ -418,4 +426,7 @@ function add_fields_to_metabox($post){  //Le pasamos $post para poder acceder al
     
 }
 
-
+function save_makeup_shop_fields($post_id){
+    /* Comprobar si es una revisión o un DOING_AUTOSAVE (Constante de la función WP_autosave(), esta guarda un post que ha sido
+      enviado mediante XHR) */
+}

@@ -123,7 +123,8 @@
       <?php
         $args = array(
         'posts_per_page' => 10,
-        'posst__not__in' => array($dest_id)
+        'posst__not__in' => array($dest_id),
+        'post_type' => array('post','makeup_shop')// Incluimos custom post type en la consulta general de wordpres
       );
           
       $custom_query = new WP_Query($args); //LOOP Para resto de post excepto el destacado

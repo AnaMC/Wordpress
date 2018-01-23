@@ -290,7 +290,7 @@ function makeup_shop(){
         'not_found'=> __('Maquillaje no encontrado. '),
     );
     
-    $args = array(                      //Array de argumentos
+    $args = array(              //Array de argumentos
         'supports' => $support,                         //Array de paneles soportados en el admin area
         'labels' => $labels,                            //Traducción  para los labels en el admina area
         'public' => true,                               //Ambito del post public
@@ -305,9 +305,117 @@ function makeup_shop(){
 }
 add_action('init','makeup_shop');
 
+//Habilitar categorías y tags en los custom post type.
 
+function add_cattags_to_custom_post_type(){
+    //Necesitamos registrar su taxonomía
+    register_taxonomy_for_object_type('category','makeup_shop');
+    register_taxonomy_for_object_type('post_tag','makeup_shop');
+}
 
+add_action('init','add_cattags_to_custom_post_type');
 
+/* 1ºPaso -> Creación del metabox */
 
+function add_makeup_shop_metabox(){
+    $screens = array ('makeup_shop');
+    foreach($screens as $screen){       //Para cada pantalla de edición de makeup_shop
+        add_meta_box(
+            'makeup_shop_metabox',
+            __('makeup shop Details','mine'),
+            'add_fields_to_metabox',
+            $screen,
+            'normal',
+            'default'
+            );
+    }
+}
+add_action('add_meta_boxes', 'add_makeup_shop_metabox');
+
+/* 2ºPaso -> Creación de la función callback */
+
+function add_fields_to_metabox($post){  //Le pasamos $post para poder acceder al id
+
+    wp_nonce_field(basename(__FILE__),'makeup_shop_metabox_nonce');
+    
+    $nombre=get_post_meta($post->ID,'nombre');
+    ?>
+    <label for="nombre"> Nombre: </label>
+    <input type="text" id="nombre" name="nombre" size="5" value="<?php echo $nombre;?>">
+    
+    <?php
+       $precio=get_post_meta($post->ID,'precio');
+    ?>
+    <label for="precio"> Precio: </label>
+    <input type="text" id="precio" name="precio" size="5" value="<?php echo $precio;?>">
+    <?php
+    
+    $descripcion=get_post_meta($post->ID,'descripcion');
+    ?>
+    <label for="descripcion"> Descripción: </label>
+    <input type="text" id="descripcion" name="descripcion" size="5" value="<?php echo $descripcion;?>">
+    <?php
+    
+    $beneficios=get_post_meta($post->ID,'beneficios');
+    ?>
+    <label for="beneficios"> Beneficios: </label>
+    <input type="text" id="beneficios" name="beneficios" size="5" value="<?php echo $beneficios;?>">
+    <?php
+    
+    $modoUso=get_post_meta($post->ID,'modoUso');
+    ?>
+    <label for="modoUso"> Modo de empleo: </label>
+    <input type="text" id="modoUso" name="modoUso" size="5" value="<?php echo $modoUso;?>">
+    <?php
+    
+    $composicion=get_post_meta($post->ID,'composicion');
+    ?>
+    <label for="composicion"> Composición: </label>
+    <input type="text" id="composicion" name="composicion" size="5" value="<?php echo $composicion;?>">
+    <?php
+    
+    $valoracion=get_post_meta($post->ID,'valoracion');
+    ?>
+    <label for="valoracion"> Valoración: </label>
+    <input type="text" id="valoracion" name="valoracion" size="5" value="<?php echo $valoracion;?>">
+    <?php
+
+    $cantidad=get_post_meta($post->ID,'cantidad');
+    ?>
+    <label for="cantidad"> Cantidad: </label>
+    <input type="text" id="cantidad" name="cantidad" size="5" value="<?php echo $cantidad;?>">
+    <?php
+
+    $tester=get_post_meta($post->ID,'tester');
+    ?>
+    <label for="tester"> Tester: </label>
+    <input type="text" id="tester" name="tester" size="5" value="<?php echo $tester;?>">
+    <?php
+    
+    $relacionados=get_post_meta($post->ID,'relacionados');
+    ?>
+    <label for="relacionados"> Productos relacionados: </label>
+    <input type="text" id="relacionados" name="relacionados" size="5" value="<?php echo $relacionados;?>">
+    <?php
+    
+    $hechoEn=get_post_meta($post->ID,'hechoEn');
+    ?>
+    <label for="hechoEn"> Fabricado en: </label>
+    <input type="text" id="hechoEn" name="hechoEn" size="5" value="<?php echo $hechoEn;?>">
+    <?php
+    
+    $coleccion=get_post_meta($post->ID,'coleccion');
+    ?>
+    <label for="coleccion"> Colección: </label>
+    <input type="text" id="coleccion" name="coleccion" size="5" value="<?php echo $coleccion;?>">
+    <?php
+    
+    $fabricante=get_post_meta($post->ID,'fabricante');
+    ?>
+    <label for="fabricante"> Fabricante: </label>
+    <input type="text" id="fabricante" name="fabricante" size="5" value="<?php echo $fabricante;?>">
+    <?php
+    
+}
 
 

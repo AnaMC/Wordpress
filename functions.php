@@ -298,6 +298,7 @@ function makeup_shop(){
         'rewrite' => array ('slug' => 'application'),   //Slug para el post
         'has_archive' => true,                          //permitimos los archivos adjuntos
         'hiperarchical' => false,                       //no va a tener posts hijos (no hay jerarquia)
+        'exclude_from_search' => false,                 //Nos aseguramos de que los custom post aparecerán en la busqueda
         'menu_position' => 5,                           //posuicion de la opción de menu en el admin area
     );
     
@@ -343,85 +344,112 @@ function add_fields_to_metabox($post){  //Le pasamos $post para poder acceder al
     name -> Nombre del campo nonce, una vez enviado el formulario es accesible vía $POST
     Son obligatorios si queremos ese nuvel de seguridad.
     */ 
+    
     wp_nonce_field(basename(__FILE__),'makeup_shop_metabox_nonce');
     //Recogemos los datos de la BBDD con la funcion get_post_meta(id del post,'nombre del campo')
-    $nombre=get_post_meta($post->ID,'nombre');
+    $nombre=get_post_meta($post->ID,'makeup_shop_nombre', true);
     ?>
     <!--Dibujamos los campos con las respectivas etiquetas HTML [El name es OBLIGATORIO]-->
-    <label for="nombre"> Nombre: </label>
-    <input type="text" id="nombre" name="nombre" size="5" value="<?php echo $nombre;?>">
+    <br>
+    <br>
+    <label for="makeup_shop_nombre"> Nombre: </label>
+    <input type="text" id="makeup_shop_nombre" name="makeup_shop_nombre" size="5" value="<?php echo $nombre;?>">
     
     <?php
-       $precio=get_post_meta($post->ID,'precio');
+    $precio=get_post_meta($post->ID,'makeup_shop_precio', true);
     ?>
-    <label for="precio"> Precio: </label>
-    <input type="text" id="precio" name="precio" size="5" value="<?php echo $precio;?>">
+    <br>
+    <br>
+    <label for="makeup_shop_precio"> Precio: </label>
+    <input type="text" id="makeup_shop_precio" name="makeup_shop_precio" size="5" value="<?php echo $precio;?>">
     <?php
     
-    $descripcion=get_post_meta($post->ID,'descripcion');
+    $descripcion=get_post_meta($post->ID,'makeup_shop_descripcion', true);
     ?>
-    <label for="descripcion"> Descripción: </label>
-    <input type="text" id="descripcion" name="descripcion" size="5" value="<?php echo $descripcion;?>">
+    <br>
+    <br>
+    <label for="makeup_shop_descripcion"> Descripción: </label>
+    <input type="text" id="makeup_shop_descripcion" name="makeup_shop_descripcion" size="5" value="<?php echo $descripcion;?>">
     <?php
     
-    $beneficios=get_post_meta($post->ID,'beneficios');
+    $beneficios=get_post_meta($post->ID,'makeup_shop_beneficios', true);
     ?>
-    <label for="beneficios"> Beneficios: </label>
-    <input type="text" id="beneficios" name="beneficios" size="5" value="<?php echo $beneficios;?>">
-    <?php
+    <br>
+    <br>
+    <label for="makeup_shop_beneficios"> Beneficios: </label>
+    <input type="text" id="makeup_shop_beneficios" name="makeup_shop_beneficios" size="5" value="<?php echo $beneficios;?>">
     
-    $modoUso=get_post_meta($post->ID,'modoUso');
-    ?>
-    <label for="modoUso"> Modo de empleo: </label>
-    <input type="text" id="modoUso" name="modoUso" size="5" value="<?php echo $modoUso;?>">
     <?php
+    $modoUso=get_post_meta($post->ID,'makeup_shop_modoUso', true);
+    ?>
+    <br>
+    <br>
+    <label for="makeup_shop_modoUso"> Modo de empleo: </label>
+    <input type="textarea" id="makeup_shop_modoUso" name="makeup_shop_modoUso" size="140" value="<?php echo $modoUso;?>">
     
-    $composicion=get_post_meta($post->ID,'composicion');
-    ?>
-    <label for="composicion"> Composición: </label>
-    <input type="text" id="composicion" name="composicion" size="5" value="<?php echo $composicion;?>">
     <?php
+    $composicion=get_post_meta($post->ID,'composicion', true);
+    ?>
+    <br>
+    <br>
+    <label for="makeup_shop_composicion"> Composición: </label>
+    <input type="text" id="makeup_shop_composicion" name="makeup_shop_composicion" size="5" value="<?php echo $composicion;?>">
     
-    $valoracion=get_post_meta($post->ID,'valoracion');
-    ?>
-    <label for="valoracion"> Valoración: </label>
-    <input type="text" id="valoracion" name="valoracion" size="5" value="<?php echo $valoracion;?>">
     <?php
-
-    $cantidad=get_post_meta($post->ID,'cantidad');
+    $valoracion=get_post_meta($post->ID,'makeup_shop_valoracion', true);
     ?>
-    <label for="cantidad"> Cantidad: </label>
-    <input type="text" id="cantidad" name="cantidad" size="5" value="<?php echo $cantidad;?>">
-    <?php
-
-    $tester=get_post_meta($post->ID,'tester');
-    ?>
-    <label for="tester"> Tester: </label>
-    <input type="text" id="tester" name="tester" size="5" value="<?php echo $tester;?>">
-    <?php
+    <br>
+    <br>
+    <label for="makeup_shop_valoracion"> Valoración: </label>
+    <input type="text" id="makeup_shop_valoracion" name="makeup_shop_valoracion" size="5" value="<?php echo $valoracion;?>">
     
-    $relacionados=get_post_meta($post->ID,'relacionados');
-    ?>
-    <label for="relacionados"> Productos relacionados: </label>
-    <input type="text" id="relacionados" name="relacionados" size="5" value="<?php echo $relacionados;?>">
     <?php
-    
-    $hechoEn=get_post_meta($post->ID,'hechoEn');
+    $cantidad=get_post_meta($post->ID,'makeup_shop_cantidad', true);
     ?>
-    <label for="hechoEn"> Fabricado en: </label>
-    <input type="text" id="hechoEn" name="hechoEn" size="5" value="<?php echo $hechoEn;?>">
+    <br>
+    <br>
+    <label for="makeup_shop_cantidad"> Cantidad: </label>
+    <input type="text" id="makeup_shop_cantidad" name="makeup_shop_cantidad" size="5" value="<?php echo $cantidad;?>">
+    
     <?php
-    
-    $coleccion=get_post_meta($post->ID,'coleccion');
+    $tester=get_post_meta($post->ID,'makeup_shop_tester', true);
     ?>
-    <label for="coleccion"> Colección: </label>
-    <input type="text" id="coleccion" name="coleccion" size="5" value="<?php echo $coleccion;?>">
+    <br>
+    <br>
+    <label for="makeup_shop_tester"> Tester: </label>
+    <input type="text" id="makeup_shop_tester" name="makeup_shop_tester" size="5" value="<?php echo $tester;?>">
+    
     <?php
-    
-    $fabricante=get_post_meta($post->ID,'fabricante');
+    $relacionados=get_post_meta($post->ID,'relacionados', true);
     ?>
-    <label for="fabricante"> Fabricante: </label>
-    <input type="text" id="fabricante" name="fabricante" size="5" value="<?php echo $fabricante;?>">
+    <br>
+    <br>
+    <label for="makeup_shop_relacionados"> Productos relacionados: </label>
+    <input type="text" id="makeup_shop_relacionados" name="makeup_shop_relacionados" size="5" value="<?php echo $relacionados;?>">
+    
+    <?php
+    $hechoEn=get_post_meta($post->ID,'makeup_shop_hechoEn', true);
+    ?>
+    <br>
+    <br>
+    <label for="makeup_shop_hechoEn"> Fabricado en: </label>
+    <input type="text" id="makeup_shop_hechoEn" name="makeup_shop_hechoEn" size="5" value="<?php echo $hechoEn;?>">
+    
+    <?php
+    $coleccion=get_post_meta($post->ID,'coleccion', true);
+    ?>
+    <br>
+    <br>
+    <label for="makeup_shop_coleccion"> Colección: </label>
+    <input type="text" id="makeup_shop_coleccion" name="makeup_shop_coleccion" size="5" value="<?php echo $coleccion;?>">
+    
+    <?php
+    $fabricante=get_post_meta($post->ID,'makeup_shop_fabricante', true);
+    ?>
+    <br>
+    <br>
+    <label for="makeup_shop_fabricante"> Fabricante: </label>
+    <input type="text" id="makeup_shop_fabricante" name="makeup_shop_fabricante" size="5" value="<?php echo $fabricante;?>">
     <?php
     
 }
@@ -429,4 +457,43 @@ function add_fields_to_metabox($post){  //Le pasamos $post para poder acceder al
 function save_makeup_shop_fields($post_id){
     /* Comprobar si es una revisión o un DOING_AUTOSAVE (Constante de la función WP_autosave(), esta guarda un post que ha sido
       enviado mediante XHR) */
+    $is_revision = wp_is_post_revision($post_id);
+    $is_autosave = wp_is_post_autosave($post_id);
+    //comprobar si nonce es valido
+    $is_nonce_valid = (isset($_POST['makeup_shop_metabox_nonce']) && wp_verify_nonce($_POST['makeup_shop_metabox_nonce'], basename (__FILE__)));
+    
+    if ($is_revision || $is_autosave || !$is_nonce_valid){
+        return;
+    }
+    
+    //Saneo de campos para evitar inyecciones de código
+    $nombre = sanitize_text_field ($_POST['makeup_shop_nombre']);
+    $precio = sanitize_text_field ($_POST['makeup_shop_precio']);
+    $descripcion = sanitize_text_field ($_POST['makeup_shop_descripcon']);
+    $beneficios = sanitize_text_field ($_POST['makeup_shop_beneficios']);
+    $modoUso = sanitize_text_field ($_POST['makeup_shop_modoUso']);
+    $composicion = sanitize_text_field ($_POST['makeup_shop_composicion']);
+    $valoracion = sanitize_text_field ($_POST['makeup_shop_valoracion']);
+    $cantidad = sanitize_text_field ($_POST['makeup_shop_cantidad']);
+    $tester = sanitize_text_field ($_POST['makeup_shop_tester']);
+    $relacionados = sanitize_text_field ($_POST['makeup_shop_relacionados']);
+    $hechoEn = sanitize_text_field ($_POST['makeup_shop_hechoEn']);
+    $coleccion = sanitize_text_field ($_POST['makeup_shop_coleccion']);
+    $fabricante = sanitize_text_field ($_POST['makeup_shop_fabricante']);
+    
+    //Actualización de la BD
+    update_post_meta($post_id, 'makeup_shop_precio', $precio);
+    update_post_meta($post_id, 'makeup_shop_nombre', $nombre);
+    update_post_meta($post_id, 'makeup_shop_descripcion', $descripcion);
+    update_post_meta($post_id, 'makeup_shop_beneficios', $beneficios);
+    update_post_meta($post_id, 'makeup_shop_modoUso', $modoUso);
+    update_post_meta($post_id, 'makeup_shop_composicion', $composicion);
+    update_post_meta($post_id, 'makeup_shop_valoracion', $valoracion);
+    update_post_meta($post_id, 'makeup_shop_cantidad', $cantidad);
+    update_post_meta($post_id, 'makeup_shop_tester', $tester);
+    update_post_meta($post_id, 'makeup_shop_relacionados', $relacionados);
+    update_post_meta($post_id, 'makeup_shop_hechoEn', $hechoEn);
+    update_post_meta($post_id, 'makeup_shop_coleccion', $coleccion);
+    update_post_meta($post_id, 'makeup_shop_fabricante', $fabricante);
 }
+add_action('save_post', 'save_makeup_shop_fields');

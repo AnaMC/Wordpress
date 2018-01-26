@@ -1,5 +1,5 @@
 <?php
-/*Registro de TODOS los js que tenemos y los ponemos "en cola" */
+/*Registro de TODOS los js que tenemos y los ponemos "en cola" */                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 
     function theme_scripts(){
         /*contactform*/
@@ -497,3 +497,26 @@ function save_makeup_shop_fields($post_id){
     update_post_meta($post_id, 'makeup_shop_fabricante', $fabricante);
 }
 add_action('save_post', 'save_makeup_shop_fields');
+
+
+// Función valoracion estrellas
+    
+    function estrellas($valor,$max=5){
+        $salida='<div class="rating">';
+        for($i = 1;$i <= $max;$i++){
+            $salida.=($valor <= $i?
+                      $salida .= '<img class="amarillo">':
+                      $salida .= '<img class="gris">');
+        }
+        $salida .= '</div>';
+        return $salida;
+    }
+    
+/*
+*   Resgister shortcodes
+*
+*/  
+    function register_shortcodes(){
+        add_shortcode('saluda', 'saluda_callback');  /*saluda_callback está en la caarpeta pligin (my-shortcodes.php)*/
+    }
+    add_action('init','register_shortcodes');

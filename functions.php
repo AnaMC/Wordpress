@@ -1,64 +1,65 @@
 <?php
 /*Registro de TODOS los js que tenemos y los ponemos "en cola" */                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 
-    function theme_scripts(){
-        /*contactform*/
-        wp_register_script('contactform.js',get_template_directory_uri() . '/contactform/contactform.js',array('jquery'),false,false);
-        wp_enqueue_script('contactform.js');
-        /*custom*/
-        wp_register_script('custom.js',get_template_directory_uri() . '/js/custom.js',array('jquery'),false,false);
-        wp_enqueue_script('custom.js');
-        /*bootstrap*/
-        wp_register_script('bootstrap.bundle.min.js',get_template_directory_uri() . '/lib/bootstrap/js/bootstrap.bundle.min.js',array('jquery'),false,false);
-        wp_enqueue_script('bootstrap.bundle.min.js');
+function theme_scripts(){
+      /*contactform*/
+      wp_register_script('contactform.js',get_template_directory_uri() . '/contactform/contactform.js',array('jquery'),false,false);
+      wp_enqueue_script('contactform.js');
+      /*custom*/
+      wp_register_script('custom.js',get_template_directory_uri() . '/js/custom.js',array('jquery'),false,false);
+      wp_enqueue_script('custom.js');
+      /*bootstrap*/
+      wp_register_script('bootstrap.bundle.min.js',get_template_directory_uri() . '/lib/bootstrap/js/bootstrap.bundle.min.js',array('jquery'),false,false);
+      wp_enqueue_script('bootstrap.bundle.min.js');
+      
+      // wp_register_script('bootstrap.bootstrap.min.js',get_template_directory_uri() . '/lib/bootstrap/js/bootstrap.min.js',array('jquery'),false,false);
+      // wp_enqueue_script('bootstrap.min.js'); /*El de arriba in...*/
+      
+      /*counterup*/
+      wp_register_script('counterup.min.js',get_template_directory_uri() . '/lib/counterup/counterup.min.js',array('jquery'),false,false);
+      wp_enqueue_script('counterup.min.js');
+      /*easing*/
+      // wp_register_script('easing.js',get_template_directory_uri() . '/lib/easing/easing.js',array('jquery'),false,false);
+      // wp_enqueue_script('easing.js');
         
-        // wp_register_script('bootstrap.bootstrap.min.js',get_template_directory_uri() . '/lib/bootstrap/js/bootstrap.min.js',array('jquery'),false,false);
-        // wp_enqueue_script('bootstrap.min.js'); /*El de arriba in...*/
-        /*counterup*/
-        wp_register_script('counterup.min.js',get_template_directory_uri() . '/lib/counterup/counterup.min.js',array('jquery'),false,false);
-        wp_enqueue_script('counterup.min.js');
-        /*easing*/
-        // wp_register_script('easing.js',get_template_directory_uri() . '/lib/easing/easing.js',array('jquery'),false,false);
-        // wp_enqueue_script('easing.js');
+      wp_register_script('easing.min.js',get_template_directory_uri() . '/lib/easing/easing.min.js',array('jquery'),false,false);
+      wp_enqueue_script('easing.min.js');
+      /*jquery*/
+      wp_register_script('jquery-migrate.min.js',get_template_directory_uri() . '/lib/jquery/jquery-migrate.min.js',array('jquery'),false,false);
+      wp_enqueue_script('jquery-migrate.min.js');
+      
+      // wp_register_script('jquery.min.js',get_template_directory_uri() . '/lib/jquery/jquery.min.js',array('jquery'),false,false);
+      // wp_enqueue_script('jquery.min.js'); /*jq del tema*/
+      /*lockfixed*/
+      wp_register_script('lockfixed.min.js',get_template_directory_uri() . '/lib/lockfixed/lockfixed.min.js',array('jquery'),false,false);
+      wp_enqueue_script('lockfixed.min.js');
+      /*parallax*/
+      wp_register_script('parallax.js',get_template_directory_uri() . '/lib/parallax/parallax.js',array('jquery'),false,false);
+      wp_enqueue_script('parallax.js');
+      /*stellar*/
+      wp_register_script('stellar.min.js',get_template_directory_uri() . '/lib/stellar/stellar.min.js',array('jquery'),false,false);
+      wp_enqueue_script('stellar.min.js');
+      /*stickyjs*/
+      wp_register_script('sticky.js',get_template_directory_uri() . '/lib/sticky/sticky.js',array('jquery'),false,false);
+      wp_enqueue_script('sticky.js');
+      /*superfish*/
+      wp_register_script('hoverIntent.js',get_template_directory_uri() . '/lib/superfish/hoverIntent.js',array('jquery'),false,false);
+      wp_enqueue_script('hoverIntent.js');
+       
+      // wp_register_script('superfish.js',get_template_directory_uri() . '/lib/superfish/superfish.js',array('jquery'),false,false);
+      // wp_enqueue_script('superfish.js');
         
-        wp_register_script('easing.min.js',get_template_directory_uri() . '/lib/easing/easing.min.js',array('jquery'),false,false);
-        wp_enqueue_script('easing.min.js');
-        /*jquery*/
-        wp_register_script('jquery-migrate.min.js',get_template_directory_uri() . '/lib/jquery/jquery-migrate.min.js',array('jquery'),false,false);
-        wp_enqueue_script('jquery-migrate.min.js');
-        
-        // wp_register_script('jquery.min.js',get_template_directory_uri() . '/lib/jquery/jquery.min.js',array('jquery'),false,false);
-        // wp_enqueue_script('jquery.min.js'); /*jq del tema*/
-        /*lockfixed*/
-        wp_register_script('lockfixed.min.js',get_template_directory_uri() . '/lib/lockfixed/lockfixed.min.js',array('jquery'),false,false);
-        wp_enqueue_script('lockfixed.min.js');
-        /*parallax*/
-        wp_register_script('parallax.js',get_template_directory_uri() . '/lib/parallax/parallax.js',array('jquery'),false,false);
-        wp_enqueue_script('parallax.js');
-        /*stellar*/
-        wp_register_script('stellar.min.js',get_template_directory_uri() . '/lib/stellar/stellar.min.js',array('jquery'),false,false);
-        wp_enqueue_script('stellar.min.js');
-        /*stickyjs*/
-        wp_register_script('sticky.js',get_template_directory_uri() . '/lib/sticky/sticky.js',array('jquery'),false,false);
-        wp_enqueue_script('sticky.js');
-        /*superfish*/
-        wp_register_script('hoverIntent.js',get_template_directory_uri() . '/lib/superfish/hoverIntent.js',array('jquery'),false,false);
-        wp_enqueue_script('hoverIntent.js');
-        
-        // wp_register_script('superfish.js',get_template_directory_uri() . '/lib/superfish/superfish.js',array('jquery'),false,false);
-        // wp_enqueue_script('superfish.js');
-        
-        wp_register_script('superfish.min.js',get_template_directory_uri() . '/lib/superfish/superfish.min.js',array('jquery'),false,false);
-        wp_enqueue_script('superfish.min.js');
-        /*tether*/
-        // wp_register_script('tether.js',get_template_directory_uri() . '/lib/tether/js/tether.js',array('jquery'),false,false);
-        // wp_enqueue_script('tether.js');
-        
-        wp_register_script('tether.min.js',get_template_directory_uri() . '/lib/tether/js/tether.min.js',array('jquery'),false,false);
-        wp_enqueue_script('tether.min.js');
-        /*waypoints*/
-        wp_register_script('waypoints.min.js',get_template_directory_uri() . '/lib/tether/tether/waypoints.min.js',array('jquery'),false,false);
-        wp_enqueue_script('waypoints.min.js');
+      wp_register_script('superfish.min.js',get_template_directory_uri() . '/lib/superfish/superfish.min.js',array('jquery'),false,false);
+      wp_enqueue_script('superfish.min.js');
+      /*tether*/
+      // wp_register_script('tether.js',get_template_directory_uri() . '/lib/tether/js/tether.js',array('jquery'),false,false);
+      // wp_enqueue_script('tether.js');
+       
+      wp_register_script('tether.min.js',get_template_directory_uri() . '/lib/tether/js/tether.min.js',array('jquery'),false,false);
+      wp_enqueue_script('tether.min.js');
+      /*waypoints*/
+      wp_register_script('waypoints.min.js',get_template_directory_uri() . '/lib/tether/tether/waypoints.min.js',array('jquery'),false,false);
+      wp_enqueue_script('waypoints.min.js');
     }
 
 add_action('wp_enqueue_script','theme_scripts'); /*Añadimos la función al hook, sin esto no dçfunciona nada */
@@ -168,9 +169,11 @@ add_filter('user_contactmethods', 'add_social_media');
 
 function skills_fields($user){ ?>
     <!--Etiqueta del panel para los nuevos campos-->
-    <h3><?php _e("User skills information","blank");?></h3>
+    <h3>
+        <?php _e("User skills information","blank");?>
+    </h3>
     <table class="form-table">
-        
+
         <tr>
             <th><label for="skill1"><?php _e("Skill 1");?></label></th>
             <td>
@@ -183,7 +186,7 @@ function skills_fields($user){ ?>
                 <span class="description"><?php _e("Please enter your skill-1 value.");?></span>
             </td>
         </tr>
-            
+
         <tr>
             <th><label for="skill2"><?php _e("Skill 2");?></label></th>
             <td>
@@ -196,7 +199,7 @@ function skills_fields($user){ ?>
                 <span class="description"><?php _e("Please enter your skill-2 value.");?></span>
             </td>
         </tr>
-        
+
         <tr>
             <th><label for="skill3"><?php _e("Skill 3");?></label></th>
             <td>
@@ -209,7 +212,7 @@ function skills_fields($user){ ?>
                 <span class="description"><?php _e("Please enter your skill-3 value.");?></span>
             </td>
         </tr>
-        
+
         <tr>
             <th><label for="skill4"><?php _e("Skill 4");?></label></th>
             <td>
@@ -349,108 +352,108 @@ function add_fields_to_metabox($post){  //Le pasamos $post para poder acceder al
     //Recogemos los datos de la BBDD con la funcion get_post_meta(id del post,'nombre del campo')
     $nombre=get_post_meta($post->ID,'makeup_shop_nombre', true);
     ?>
-    <!--Dibujamos los campos con las respectivas etiquetas HTML [El name es OBLIGATORIO]-->
-    <br>
-    <br>
-    <label for="makeup_shop_nombre"> Nombre: </label>
-    <input type="text" id="makeup_shop_nombre" name="makeup_shop_nombre" size="5" value="<?php echo $nombre;?>">
-    
-    <?php
+        <!--Dibujamos los campos con las respectivas etiquetas HTML [El name es OBLIGATORIO]-->
+        <br>
+        <br>
+        <label for="makeup_shop_nombre"> Nombre: </label>
+        <input type="text" id="makeup_shop_nombre" name="makeup_shop_nombre" size="5" value="<?php echo $nombre;?>">
+
+        <?php
     $precio=get_post_meta($post->ID,'makeup_shop_precio', true);
     ?>
-    <br>
-    <br>
-    <label for="makeup_shop_precio"> Precio: </label>
-    <input type="text" id="makeup_shop_precio" name="makeup_shop_precio" size="5" value="<?php echo $precio;?>">
-    <?php
+            <br>
+            <br>
+            <label for="makeup_shop_precio"> Precio: </label>
+            <input type="text" id="makeup_shop_precio" name="makeup_shop_precio" size="5" value="<?php echo $precio;?>">
+            <?php
     
     $descripcion=get_post_meta($post->ID,'makeup_shop_descripcion', true);
     ?>
-    <br>
-    <br>
-    <label for="makeup_shop_descripcion"> Descripción: </label>
-    <input type="text" id="makeup_shop_descripcion" name="makeup_shop_descripcion" size="5" value="<?php echo $descripcion;?>">
-    <?php
+                <br>
+                <br>
+                <label for="makeup_shop_descripcion"> Descripción: </label>
+                <input type="text" id="makeup_shop_descripcion" name="makeup_shop_descripcion" size="5" value="<?php echo $descripcion;?>">
+                <?php
     
     $beneficios=get_post_meta($post->ID,'makeup_shop_beneficios', true);
     ?>
-    <br>
-    <br>
-    <label for="makeup_shop_beneficios"> Beneficios: </label>
-    <input type="text" id="makeup_shop_beneficios" name="makeup_shop_beneficios" size="5" value="<?php echo $beneficios;?>">
-    
-    <?php
+                    <br>
+                    <br>
+                    <label for="makeup_shop_beneficios"> Beneficios: </label>
+                    <input type="text" id="makeup_shop_beneficios" name="makeup_shop_beneficios" size="5" value="<?php echo $beneficios;?>">
+
+                    <?php
     $modoUso=get_post_meta($post->ID,'makeup_shop_modoUso', true);
     ?>
-    <br>
-    <br>
-    <label for="makeup_shop_modoUso"> Modo de empleo: </label>
-    <input type="textarea" id="makeup_shop_modoUso" name="makeup_shop_modoUso" size="140" value="<?php echo $modoUso;?>">
-    
-    <?php
+                        <br>
+                        <br>
+                        <label for="makeup_shop_modoUso"> Modo de empleo: </label>
+                        <input type="textarea" id="makeup_shop_modoUso" name="makeup_shop_modoUso" size="140" value="<?php echo $modoUso;?>">
+
+                        <?php
     $composicion=get_post_meta($post->ID,'composicion', true);
     ?>
-    <br>
-    <br>
-    <label for="makeup_shop_composicion"> Composición: </label>
-    <input type="text" id="makeup_shop_composicion" name="makeup_shop_composicion" size="5" value="<?php echo $composicion;?>">
-    
-    <?php
+                            <br>
+                            <br>
+                            <label for="makeup_shop_composicion"> Composición: </label>
+                            <input type="text" id="makeup_shop_composicion" name="makeup_shop_composicion" size="5" value="<?php echo $composicion;?>">
+
+                            <?php
     $valoracion=get_post_meta($post->ID,'makeup_shop_valoracion', true);
     ?>
-    <br>
-    <br>
-    <label for="makeup_shop_valoracion"> Valoración: </label>
-    <input type="text" id="makeup_shop_valoracion" name="makeup_shop_valoracion" size="5" value="<?php echo $valoracion;?>">
-    
-    <?php
+                                <br>
+                                <br>
+                                <label for="makeup_shop_valoracion"> Valoración: </label>
+                                <input type="text" id="makeup_shop_valoracion" name="makeup_shop_valoracion" size="5" value="<?php echo $valoracion;?>">
+
+                                <?php
     $cantidad=get_post_meta($post->ID,'makeup_shop_cantidad', true);
     ?>
-    <br>
-    <br>
-    <label for="makeup_shop_cantidad"> Cantidad: </label>
-    <input type="text" id="makeup_shop_cantidad" name="makeup_shop_cantidad" size="5" value="<?php echo $cantidad;?>">
-    
-    <?php
+                                    <br>
+                                    <br>
+                                    <label for="makeup_shop_cantidad"> Cantidad: </label>
+                                    <input type="text" id="makeup_shop_cantidad" name="makeup_shop_cantidad" size="5" value="<?php echo $cantidad;?>">
+
+                                    <?php
     $tester=get_post_meta($post->ID,'makeup_shop_tester', true);
     ?>
-    <br>
-    <br>
-    <label for="makeup_shop_tester"> Tester: </label>
-    <input type="text" id="makeup_shop_tester" name="makeup_shop_tester" size="5" value="<?php echo $tester;?>">
-    
-    <?php
+                                        <br>
+                                        <br>
+                                        <label for="makeup_shop_tester"> Tester: </label>
+                                        <input type="text" id="makeup_shop_tester" name="makeup_shop_tester" size="5" value="<?php echo $tester;?>">
+
+                                        <?php
     $relacionados=get_post_meta($post->ID,'relacionados', true);
     ?>
-    <br>
-    <br>
-    <label for="makeup_shop_relacionados"> Productos relacionados: </label>
-    <input type="text" id="makeup_shop_relacionados" name="makeup_shop_relacionados" size="5" value="<?php echo $relacionados;?>">
-    
-    <?php
+                                            <br>
+                                            <br>
+                                            <label for="makeup_shop_relacionados"> Productos relacionados: </label>
+                                            <input type="text" id="makeup_shop_relacionados" name="makeup_shop_relacionados" size="5" value="<?php echo $relacionados;?>">
+
+                                            <?php
     $hechoEn=get_post_meta($post->ID,'makeup_shop_hechoEn', true);
     ?>
-    <br>
-    <br>
-    <label for="makeup_shop_hechoEn"> Fabricado en: </label>
-    <input type="text" id="makeup_shop_hechoEn" name="makeup_shop_hechoEn" size="5" value="<?php echo $hechoEn;?>">
-    
-    <?php
+                                                <br>
+                                                <br>
+                                                <label for="makeup_shop_hechoEn"> Fabricado en: </label>
+                                                <input type="text" id="makeup_shop_hechoEn" name="makeup_shop_hechoEn" size="5" value="<?php echo $hechoEn;?>">
+
+                                                <?php
     $coleccion=get_post_meta($post->ID,'coleccion', true);
     ?>
-    <br>
-    <br>
-    <label for="makeup_shop_coleccion"> Colección: </label>
-    <input type="text" id="makeup_shop_coleccion" name="makeup_shop_coleccion" size="5" value="<?php echo $coleccion;?>">
-    
-    <?php
+                                                    <br>
+                                                    <br>
+                                                    <label for="makeup_shop_coleccion"> Colección: </label>
+                                                    <input type="text" id="makeup_shop_coleccion" name="makeup_shop_coleccion" size="5" value="<?php echo $coleccion;?>">
+
+                                                    <?php
     $fabricante=get_post_meta($post->ID,'makeup_shop_fabricante', true);
     ?>
-    <br>
-    <br>
-    <label for="makeup_shop_fabricante"> Fabricante: </label>
-    <input type="text" id="makeup_shop_fabricante" name="makeup_shop_fabricante" size="5" value="<?php echo $fabricante;?>">
-    <?php
+                                                        <br>
+                                                        <br>
+                                                        <label for="makeup_shop_fabricante"> Fabricante: </label>
+                                                        <input type="text" id="makeup_shop_fabricante" name="makeup_shop_fabricante" size="5" value="<?php echo $fabricante;?>">
+                                                        <?php
     
 }
 
@@ -516,7 +519,14 @@ add_action('save_post', 'save_makeup_shop_fields');
 *   Resgister shortcodes
 *
 */  
-    function register_shortcodes(){
-        add_shortcode('saluda', 'saluda_callback');  /*saluda_callback está en la caarpeta pligin (my-shortcodes.php)*/
-    }
-    add_action('init','register_shortcodes');
+function register_shortcodes(){
+    add_shortcode('saluda', 'saluda_callback');  /*saluda_callback está en la caarpeta pligin (my-shortcodes.php)*/
+}
+add_action('init','register_shortcodes');
+
+/*Paginación*/
+
+function get_pagination_page_links($type="plain",$ensize=1,$mindsize=1){
+    $global $wp_query;
+    // TERMINAR
+}

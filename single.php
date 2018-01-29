@@ -1,12 +1,10 @@
 <?php
-    get_header();
+    get_hea;
     get_template_part('nav');
     the_post();
 ?>
 <div class="row">
     <div class="container">
-
-
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <?php 
                 the_content(); 
@@ -72,8 +70,6 @@
 </div> 
         <!--Fin Comentarios-->
         
-
-
 </div>
 
 <?php

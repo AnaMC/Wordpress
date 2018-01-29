@@ -2,7 +2,7 @@
     <div class="bg-faded col-md-12">
         <section>
             <div class="sidebarsection">
-                <h1>Sidebar</h1>
+                <h2>Sidebar</h2>
                 <div class="search">
                     <?php get_search_form(); ?>
                 </div>
@@ -11,7 +11,7 @@
         
         <section>
             <div class="sidebarsection">
-                <h1>Sidebar</h1>
+                <h2>Sidebar</h2>
                 <div class="widgets">
                     <?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('Sidebar Widget')) : ?>
                         <div class="warning">No widgets installed for this theme</div>
@@ -22,7 +22,7 @@
         
         <section>
             <div class="sidebarsection">
-                <h1>Sidebar</h1>
+                <h2>Últimas entradas</h2>
                 <div class="lastentries">
                     <?php 
                     $args = array (
@@ -37,7 +37,23 @@
         
         <section>
             <div class="sidebarsection">
-                <h1>Sidebar</h1>
+                <h2>Venta de maquillaje</h2>
+                <div class="lastentries">
+                    <?php 
+                        $args = array (
+                            'type' => 'postbypost', //hay otro argumento que es 'alpha' que saca ordenado alfabeticamente por el titulo
+                            'limit' => 8,
+                            'post_type' => 'makeup_shop',
+                        );
+                        wp_get_archives($args); 
+                    ?>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <div class="sidebarsection">
+                <h2>Sidebar</h2>
                 <div class="archives">
                     <?php wp_get_archives() ?>
                 </div>
@@ -46,7 +62,7 @@
         
         <section>
             <div class="sidebarsection">
-                <h1>Sidebar</h1>
+                <h2>Sidebar</h2>
                 <div class="categories">
                     <?php 
                     $args = array(
@@ -64,7 +80,7 @@
         
         <section>
             <div class="sidebarsection">
-                <h1>Authors</h1>
+                <h2>Autores</h2>
                 <div class="authors">
                     <?php 
                     $args = array(
@@ -85,7 +101,7 @@
         
         <section>
             <div class="sidebarsection">
-                <h1>Sidebar</h1>
+                <h2>Ir a</h2>
                 <div class="pages">
                     <?php 
                     $args = array(

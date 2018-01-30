@@ -527,6 +527,44 @@ add_action('init','register_shortcodes');
 /*Paginación*/
 
 function get_pagination_page_links($type="plain",$ensize=1,$mindsize=1){
-    $global $wp_query;
-    // TERMINAR
+    global $wp_query;
+    $currentpage = get_query_var('paged')>1?get_query_var('paged'):1;
+    if(!in_array($type, array('plain','list','array'))){
+        $type='plain';
+        
+    }
+
+    $ensize=absint($ensize);
+    $mindsize=absint($mindsize);
+    $args=array(
+        'base' =>@add_query_arg('paged','%#%'),
+        'format' => '',
+        'total'=>$wp_query->max_num_pages,
+        'current' => $currentpage,
+        'ensize'=>$ensize,
+        'midsize'=>$midsize,
+        'type'=>$type,
+        'prev_text'=>'&lt;$lt;previous page',
+        'next_text' => 'next page &gt;$gt;'
+        );
+        
+    if(!empty($wp_query->query_vars['s'])){
+        $args['add_args']=array('s'=>get_query_var('s'));
+    }
+    return paginate_links($args);
 }
+
+   // El método using_permalinks() del objeto wp_rewrite de WP devuelve TRUE si nuestro sitio usa alguna clase de permalinks
+    // if ( $wp_rewrite->using_permalinks() ) {
+        /* Si usamos permalinks hay que rehacer la URL donde pasaremos el número de página, quitando el argumento s de la url por defecto
+         que puede estar a partir de la última barra de directorio en la propia url
+         
+        user_trailingslashit -> Si los permalinks están configuarados para acabar en /, le añade la barra a la url que genere para los page links
+        si no está configurado para ello, se la quita en caso de que exista
+        trailingslashit( '/home/julien/bin/dotfiles' );  ---> '/home/julien/bin/dotfiles/'
+         
+        */
+        // $pagination['base'] = user_trailingslashit( trailingslashit( remove_query_arg( 's', get_pagenum_link( 1 ) ) ).'page/%#%/', 'paged' );
+    // } 
+        /* Si estamos en el template search o archive tenemos que tener en cuenta 
+        la variable s que es la que tiene el valor de búsqueda */ 

@@ -50,7 +50,9 @@
       <!-- #nav-menu-container -->
 
       <nav class="nav social-nav pull-right d-none d-lg-inline">
-        <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-linkedin"></i></a> <a href="#"><i class="fa fa-envelope"></i></a>
+        <?php
+           my_breadcrumb();
+        ?>     
       </nav>
     </div>
   </header>
@@ -124,7 +126,7 @@
   
       <?php
         $args = array(
-        'posts_per_page' => 10,
+        'posts_per_page' => 5,
         'posst__not__in' => array($dest_id),
         'post_type' => array('post','makeup_shop'));// Incluimos custom post type en la consulta general de wordpres
         

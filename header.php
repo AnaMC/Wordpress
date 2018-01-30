@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Bell Bootstrap 4 Theme</title>
+  <title><?php my_title();?></title>  <!--Lallamada a la funcion de my tiltle-->
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
